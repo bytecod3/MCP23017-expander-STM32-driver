@@ -6,11 +6,13 @@ I use the STM32F401CCU6 but this driver is compatible with any other MCU
 
 ## Usage
 1. Include ```mcp23017.h``` header in your main.c file
-```#include "mcp23017.h"```
+``` c
+#include "mcp23017.h"
+```
 
 2. Create the instance for an MCP23017 hardware device. You can create up to 8 devices each with different hardware address
 as outlined in the datasheet
-```
+```c
 MCP23017 e1;
 MCP23017 e2;
 
@@ -21,14 +23,13 @@ MCP23017_instance expander2 = &e2; // next address 0x21
 
 3. In the main function, initialize the MCP23017 object
 
-```
+```c
   // initialise MCP23017
   MCP_initialize(expander1, &hi2c1, 0x20);
 ````
 
 3. Set the pinmodes for a pin
-```
-
+```c
 /**
 * set pin 15 as output
 * The driver will automatically resolve which port this pin belongs to.
@@ -40,7 +41,7 @@ MCP_pinmode(expander1, 15, OUTPUT);
 ```
 
 4. Drive the pin
-```
+```c
 MCP_write_pin(expander1, 15, HIGH);
 ```
 
@@ -49,7 +50,7 @@ You can configure the pins as inputs also. At the moment this driver allows read
 
 #### To read a single pin
 To read a single pin use:
-```
+```c
 uint8_t MCP_read_pin(MCP23017_instance inst, uint8_t pin); // returns a 1 or a 0
 
 ```
@@ -57,7 +58,7 @@ uint8_t MCP_read_pin(MCP23017_instance inst, uint8_t pin); // returns a 1 or a 0
 #### To read the whole port
 Since the MCP2317 is 16 bit with 2 ports each 8-bit wide, when reading a port you need to pass the port number you want to read.
 
-```
+```c
 /***
 *port_num should be 0 or 1
 * 0 for PORTA
