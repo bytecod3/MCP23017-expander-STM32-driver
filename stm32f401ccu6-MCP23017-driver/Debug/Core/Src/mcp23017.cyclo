@@ -1,0 +1,5 @@
+../Core/Src/mcp23017.c:11:6:MCP_initialize	1
+../Core/Src/mcp23017.c:16:6:MCP_pinmode	3
+../Core/Src/mcp23017.c:53:6:MCP_write_pin	4
+../Core/Src/mcp23017.c:94:9:MCP_read_pin	2
+../Core/Src/mcp23017.c:121:9:MCP_read_port	3
